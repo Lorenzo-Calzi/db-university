@@ -1,6 +1,16 @@
 # Database University:
 
-## (table) Dipartimenti:
+## Università:
+
+- id                            BIGINT PRIMARY KEY UNIQUE NOTNULL INDEX
+- nome                          VARCHAR(50) NOTNULL INDEX                           <!-- UNIMIB -->
+- sede                          VARCHAR(50) NOTNULL INDEX                           <!-- milano -->
+- pec                           VARCHAR(50) NOTNULL                                 <!-- prova@example.com -->
+- telefono                      INT NOTNULL                                         <!-- 349 xxxxxx -->
+- rettore                       VARCHAR(30) NOTNULL                                 <!-- Ferrari -->
+
+
+## Dipartimenti:
 
 - id                            BIGINT PRIMARY KEY UNIQUE NOTNULL INDEX
 - nome_del_dipartimento         VARCHAR(50) NOTNULL INDEX                          <!-- DIPARTIMENTO DI SCIENZE UMANE -->
@@ -18,7 +28,7 @@
 - anno_accademico               VARCHAR(30) NOTNULL INDEX                           <!-- 2020/2021 -->
 - posti disp.                   MEDIUMINT NOTNULL                                   <!-- 670 -->
 - durata_in_anni                TINYINT NULL NOTNULL                                <!-- 3 -->
-- sede                          VARCHAR(30) NOTNULL INDEX                           <!-- milano -->
+- sede                          VARCHAR(50) NOTNULL INDEX                           <!-- milano -->
 - lingua                        VARCHAR(30) NOTNULL                                 <!-- italiano -->
 - crediti                       SMALL NOTNULL                                       <!-- 180 -->
 
@@ -33,6 +43,7 @@
 - categoria                     VARCHAR(30) NULL                                    <!-- Laurea triennale -->
 - descrizione                   TEXT NULL                                           <!-- text.. -->
 
+
 ## Insegnanti:
 
 - id                            BIGINT PRIMARY KEY UNIQUE NOTNULL INDEX
@@ -41,10 +52,14 @@
 - email                         VARCHAR(50) NOTNULL                                 <!-- prova@example.com -->
 - telefono                      INT NULL                                            <!-- 349 xxxxxx -->
 - stanza                        TEXT NOTNULL                                        <!-- Piano: P04, Stanza: 4154 -->
-- materie                       VARCHAR(30) NOTNULL                                 <!-- Fisica/Matematica -->
 - gerarchia                     VARCHAR(30) NULL                                    <!-- prof ordinario / associati -->
 - corsi_tenuti(SSD)             VARCHAR(50) NULL INDEX                              <!-- PEDAGOGIA GENERALE E SOCIALE-->                  
 
+
+## Materie
+
+- id                            BIGINT PRIMARY KEY UNIQUE NOTNULL INDEX
+- materie                       VARCHAR(30) NOTNULL                                 <!-- Fisica/Matematica -->
 
 ## Appelli
 
@@ -54,7 +69,6 @@
 - scadenza                      VARCHAR(30) NOTNULL                                 <!-- 12/2021 -->
 - corso_di_studio               VARCHAR(30) NULL                                    <!-- Sciende dell'educazione -->
 - docente                       VARCHAR(30) NULL                                    <!-- Rossi -->
-- voto                          TINYINT NULL NOTNULL                                <!-- 30 -->
 
 
 ## Studente
@@ -71,10 +85,9 @@
 - crediti                       SMALL NOTNULL                                       <!-- 180 -->      
 
 
-## Voto
+## Studenti_Appelli
 
-- 
-
-
-
-
+- id                            BIGINT PRIMARY KEY UNIQUE NOTNULL INDEX
+- fk                            BIGINT FOREIGN KEY UNIQUE NOTNULL INDEX
+- fk                            BIGINT FOREIGN KEY UNIQUE NOTNULL INDEX
+- voto                          TINYINT NULL NOTNULL                                <!-- 30 -->

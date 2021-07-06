@@ -1,0 +1,32 @@
+body{
+    text-align: center;
+}
+.message{
+    display: block;
+    color: red;
+    font-size: 30px;
+    margin: 30px;
+    font-weight: 500;
+}
+.container{
+    display: inline-block;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+.user{
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 320px;
+    box-shadow: 1px 1px 10px 1px rgb(185, 185, 185);
+}
+h2{
+    font-size: 30px;
+}
+h3{
+    font-size: 24px;
+}
+.user:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}

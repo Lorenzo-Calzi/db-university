@@ -12,6 +12,7 @@ define('DB_PORT', '3306');
 $connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
 /* var_dump($connection); */
 
+
 # 3.
 if ($connection && $connection->connect_error) {
     echo 'Sorry, connection failed! ' . $connection->connect_error;
@@ -21,6 +22,16 @@ if ($connection && $connection->connect_error) {
 
 
 # 4.
+$statement = $connection->prepare("INSERT INTO `students` (`name`,`surname`, `date_of_birth`)");
+$statement->bind_param("iss", $name, $surname, $date_of_birth);
+$name = "Lorenzo";
+$surname = "Calzi";
+$date_of_birth = "23-09-199";
+$statement->execute();
+var_dump($statement); 
+
+
+# 5.
 $sql = "SELECT * FROM `students` WHERE YEAR(`date_of_birth`) = 1999";
 $results = $connection->query($sql);
 /* var_dump($results); */
@@ -40,11 +51,17 @@ if($results && $results->num_rows > 0) {
     <?php
     }
 } elseif($results) {
-    echo "0 Results";
+    ?>
+    <h2> <?php echo "0 Results"; ?> </h2>
+    <?php
 } else {
-    echo "Query error";
+    ?>
+    <h2> <?php  echo "Query error"; ?> </h2>
+    <?php
 }
 
+
+# 6.
 $connection->close();
 
 ?>

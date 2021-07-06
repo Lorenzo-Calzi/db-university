@@ -22,11 +22,18 @@ if ($connection && $connection->connect_error) {
 
 
 # 4.
-$statement = $connection->prepare("INSERT INTO `students` (`name`,`surname`, `date_of_birth`)");
-$statement->bind_param("iss", $name, $surname, $date_of_birth);
+$statement = $connection->prepare("INSERT INTO `students` (`name`,`surname`, `date_of_birth`,
+`degree_id`, `fiscal_code`, `enrolment_date`, `registration_number`, `email`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+$statement->bind_param("sssissis", $name, $surname, $date_of_birth, $degree_id,
+$fiscal_code, $enrolment_date, $registration_number, $email);
 $name = "Lorenzo";
 $surname = "Calzi";
-$date_of_birth = "23-09-199";
+$date_of_birth = "1999-09-23";
+$degree_id = 10;
+$fiscal_code = "CLZLNZ99P23A940H";
+$enrolment_date = "2018-09-15";
+$registration_number = 3451559558;
+$email = "lorenzocalzi@gmail.com";
 $statement->execute();
 var_dump($statement); 
 
